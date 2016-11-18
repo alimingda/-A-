@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+          .scene{
+          	width: 600px;
+          	height: 500px;
+          	position: fixed;
+          	left: 0;top:0;right:0;bottom:0;
+          	margin: auto;
+          }
+          .face{
+          	position: absolute;
+          	left: 0;right: 0;margin: 0 auto;
+          	top:0;
+          	width: 310px;
+          	height: 300px;
+          	border-radius: 48%;
+          	border: #333 2px solid;
+          	background: #07beea;
+               background: -webkit-gradient(linear, right top, left bottom, from(#fff) ,color-stop(0.20, #07beea), color-stop(0.73, #10a6ce),color-stop(0.95, #000), to(#444));
+               box-shadow: -5px 10px 15px rgba(0,0,0,0.45);
+          }
+          .mouse{
+          	position: absolute;
+          	bottom: 25px;
+          	left: 0; right: 0; margin: 0 auto;
+          	width: 264px;
+          	height: 196px;
+          	border: 2px solid #000;
+          	border-radius:150px 150px;
+          	background: #FFF;
+            background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.83,#eee),color-stop(0.90,#999),color-stop(0.95,#444), to(#000));
+                        z-index: 8;
+          }
+          .mouth{
+          	    position: absolute;
+	          	bottom: 35px;
+	          	left: 0; right: 0; margin: 0 auto;
+          	    width: 240px;
+			    height: 500px;
+			    border-bottom: 3px solid #333;
+			    border-radius: 120px;	   
+          }
+          .mouthb{
+          	    position: absolute;
+	          	top: 13px;
+	          	left: 0; right: 0; margin: 0 auto;
+	          	width: 240px;
+		        height: 120px;
+	          	border-radius:150px 150px;
+			    background: #FFF;       
+          }
+          .hul{
+          	position: absolute;
+          	left:12%;
+          	top:45%;
+          	width: 60px;
+          	height: 2px;
+          	background: #000;
+          }
+          .hul:before{
+          	content: "";
+          	position: absolute;
+          	top:-20px;
+          	right: 0;
+          	width: 62px;
+          	height: 2px;
+          	background: #333;
+          	transfrom-origin:right;
+          	transform:rotate(20deg);
+          }
+           .hul:after{
+          	content: "";
+          	position: absolute;
+          	top:20px;
+          	right: 0;
+          	width: 62px;
+          	height: 2px;
+          	background: #333;
+          	transfrom-origin:right;
+          	transform:rotate(-20deg);
+          }
+          .hur{
+          	position: absolute;
+          	right:12%;
+          	top:45%;
+          	width: 60px;
+          	height: 2px;
+          	background: #000;
+          }
+          .hur:before{
+          	content: "";
+          	position: absolute;
+          	top:-20px;
+          	left: 0;
+          	width: 62px;
+          	height: 2px;
+          	background: #333;
+          	transfrom-origin:left;
+          	transform:rotate(-20deg);
+          }
+           .hur:after{
+          	content: "";
+          	position: absolute;
+          	top:20px;
+          	left: 0;
+          	width: 62px;
+          	height: 2px;
+          	background: #333;
+          	transfrom-origin:left;
+          	transform:rotate(20deg);
+          }
+          .line{
+          	width: 3px;
+          	height: 100px;
+          	background: #333;
+          	position: absolute;
+          	top: 60px;
+          	left: 0; right: 0; margin: 0 auto;
+          }
+          .nose{
+          	position: absolute;
+          	top: 34px;
+          	left: 0; right: 0; margin: 0 auto;
+          	width: 32px;
+          	height: 32px;
+          	border: 2px solid #000;
+          	border-radius: 50%;
+          	background: #c93e00;
+               cursor: pointer;
+               transition:all 2s ease;
+               -webkit-animation:lmd 0.6s infinite;
+          }
+          .nose_s{
+          	position: absolute;
+          	top:;
+          	left: 0; 
+          	width: 10px;
+          	height: 10px;
+          	border-radius: 50%;
+          	box-shadow: 19px 8px 5px #fff;
+          }
+          @-webkit-keyframes lmd{
+               0%{ 
+                    background: red; 
+               }
+               15%{
+                    width: 32px;
+                    height: 32px;  
+                    background: #c93e00; 
+               }
+               30%{
+                    width: 30px;
+                    height: 30px;  
+                    background: orange; 
+               }
+               45%{
+                    width: 32px;
+                    height: 32px;  
+                    background: #c93e00; 
+               }
+               60%{ 
+                    background: red; 
+               }
+               75%{
+                    width: 32px;
+                    height: 32px;  
+                    background: #c93e00; 
+               }
+               90%{
+                    width: 30px;
+                    height: 30px;  
+                    background: orange; 
+               }
+               100%{
+                    width: 32px;
+                    height: 32px;  
+                    background: #c93e00;
+               }
+          }
+          .eyesl{
+          	    position: absolute;
+          	    top: -40px;
+          	    left: 56px;
+			    border-radius: 35px 35px;
+			    -webkit-border-radius: 35px 35px;
+			    -moz-border-radius: 35px 35px;
+			    border: 2px solid #000;
+			    width: 72px;
+			    height: 83px;
+			    z-index: 20;
+			    background: #fff;
+          }
+           .eyesr{
+          	    position: absolute;
+          	    top: -40px;
+          	    right: 56px;
+			    border-radius: 35px 35px;
+			    -webkit-border-radius: 35px 35px;
+			    -moz-border-radius: 35px 35px;
+			    border: 2px solid #000;
+			    width: 72px;
+			    height: 83px;
+			    z-index: 20;
+			    background: #fff;
+          }
+          .el{
+               position: absolute;
+               width: 15px;
+               height: 15px;
+			   border-radius:50%;
+			   background: #333;
+			   bottom: 20px;
+			   right: 10px;
+                  transition:all 0.3s ease;
+          }
+          .er{
+               position: absolute;
+               width: 15px;
+               height: 15px;
+			   border-radius:50%;
+			   background: #333;
+			   bottom: 20px;
+			   left: 10px;
+                  transition:all 0.3s ease;
+          }
+          .lingdai{
+          	width: 230px;
+          	height: 20px;
+          	border: 2px solid black;
+          	border-radius: 10px;
+          	background: #ca4100;
+               background: -webkit-gradient(linear, left top, left bottom, from(#ca4100), to(#800400));
+          	position: absolute;
+          	left:0;right:0;top: 265px;
+          	margin: 0 auto;
+               z-index: 10;
+          }
+          .legl{
+               width: 120px;
+               height: 80px;
+               position: absolute;
+               top: 265px;
+               left:86px;
+               transform-origin:right;
+               transform:rotate(-40deg);
+          }
+          .handl{
+               width: 80px;
+               height: 50px;
+               border:1px solid black;
+               background: #0096be;
+               position: absolute;
+               top: 0;
+               bottom: 0;
+               right: 0;
+               margin: auto 0;
+          }
+          .hsl{
+               width: 60px;
+               height: 60px;
+               border-radius: 30px;
+               border: 2px solid black;
+               background: #FFF;
+               position: absolute;
+               left: 0;top: 0;bottom: 0;
+               margin: auto 0;
+               background: linear-gradient(to left,#eee,#fff,#eee);
+          }
+           .legr{
+               width: 120px;
+               height: 80px;
+               position: absolute;
+               top: 265px;
+               right:86px;
+               transform-origin:left;
+               transform:rotate(40deg);
+          }
+          .handr{
+               width: 80px;
+               height: 50px;
+               border:1px solid black;
+               background: #07beea;
+               position: absolute;
+               top: 0;
+               bottom: 0;
+               left: 0;
+               margin: auto 0;
+               box-shadow: -3px -8px 12px rgba(0,0,0,.6) inset;
+          }
+          .hsr{
+               width: 60px;
+               height: 60px;
+               border-radius: 30px;
+               border: 2px solid black;
+               background: #FFF;
+               position: absolute;
+               right: 0;top: 0;bottom: 0;
+               margin: auto 0;
+               background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.5,#fff),color-stop(0.70,#eee),color-stop(0.8,#ddd), to(#999));
+          }
+          .shenti{
+               position: absolute;
+               width: 220px;
+               height: 165px;
+               background: #0096be;
+               background: -webkit-gradient(linear, right top, left top, from(#07beea),color-stop(0.5, #0073b3),color-stop(0.75,#00b0e0), to(#0096be));
+              border: #333 2px solid;
+              top: 285px;
+              left:0;right: 0;
+              margin: 0 auto;
+          }
+          .kongxi{
+               width: 20px;
+               height: 10px;
+               border: 2px solid black;
+               border-radius: 20px 20px 0 0;
+               background: #FFF;
+               position: absolute;
+                position: absolute;left: 0;right: 0;
+               margin: 0 auto;
+               bottom: 0px;
+          }
+          .kxbg{
+               width: 20px;
+               height: 5px;
+               background: #FFF;
+               position: absolute;left: 0;right: 0;
+               margin: 0 auto;
+               bottom: -5px;
+          }
+          .shentibg{
+               position: absolute;
+               width: 224px;
+               height: 50px;
+               background: #0096be;
+               background: -webkit-gradient(linear, right top, left top, from(#07beea),color-stop(0.5, #0073b3),color-stop(0.75,#00b0e0), to(#0096be));
+              top: 285px;
+              left:0;right: 0;
+              margin: 0 auto;   
+              z-index: 1;  
+          }
+          .koudaibg{
+               position: absolute;
+               background: #FFF;
+               width: 170px;
+               height: 170px;
+               border:2px solid black;
+               border-radius: 50%;
+               left: 0;right: 0;
+               margin: 0 auto;
+               top: 240px;
+               z-index: 7;
+          }
+          .footerl{
+               position: absolute;
+               width: 125px;
+               height: 30px;
+               background: #FFF;
+               border: 2px solid black;
+               border-radius: 80px 60px 60px 40px;
+               background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.85,#eee), to(#999));
+               z-index: 11;
+               bottom: 17px;
+               left: 168px;
+          }
+          .footerr{
+               position: absolute;
+               width: 125px;
+               height: 30px;
+               background: #FFF;
+               border: 2px solid black;
+               border-radius:60px 80px 40px 60px;
+               background: -webkit-gradient(linear, left top, right bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.85,#eee), to(#999));
+               z-index: 11;
+               bottom: 17px;
+               right: 168px;
+          }
+          .koudai{
+               position: absolute;
+               background: #FFF;
+               width: 130px;
+               height: 65px;
+               border:2px solid black;
+               border-radius: 0 0  130px 130px ;
+               left: 0;right: 0;
+               margin: 0 auto;
+               top: 80px;
+               z-index: 7;
+          }
+          .lingdang{
+               width: 40px;
+               height: 40px;
+               border-radius:40px;
+               background: #f9f12a;
+               border: 2px solid #000;
+               background: -webkit-gradient(linear,left top,left bottom,from(#f9f12a),color-stop(0.5, #e9e11a), to(#a9a100));
+               position: absolute;
+               left: 0;right: 0;
+               margin: 0 auto;
+               bottom: 185px;
+               z-index: 12;
+               transform-origin:top;
+               -webkit-animation:lda 0.2s infinite;
+          }
+
+           @-webkit-keyframes lda{
+               0%{ 
+                    background: yellow; 
+                    transform:rotate(0deg);
+               }
+               15%{
+                    background: #f9f12a; 
+                    transform:rotate(6deg);
+               }
+               30%{
+                    background: yellow; 
+                    transform:rotate(0deg);
+               }
+               45%{
+                    background: #f9f12a; 
+                    transform:rotate(-6deg);
+               }
+               60%{ 
+                    background: yellow; 
+                    transform:rotate(0deg);
+               }
+               75%{
+                    background: #f9f12a; 
+                    transform:rotate(6deg);
+               }
+               90%{
+                    background: yellow; 
+                    transform:rotate(0deg);
+               }
+               100%{
+                    background: #f9f12a;
+                    transform:rotate(-6deg);
+               }
+          }
+          .ldline{
+               position: absolute;
+               bottom: 0;
+               left:0; right:0;margin:0 auto;
+               width: 3px;
+               height: 12px;
+               background: #000;
+          }
+           .ldshadow{
+               position: absolute;
+               bottom: 12px;
+               left:0; right:0;margin:0 auto;
+               width: 12px;height: 10px;
+               border-radius: 5px;
+               background: #000;
+          }
+           .ldflower{
+               position: absolute;
+               top: 10px;
+               left:0; right:0;margin:0 auto;
+               width: 36px;height: 2px;
+              border: #333 solid 2px;
+             background: #f9f12a;
+          }   
+          .ldlight{
+               position: absolute;
+               top: -3px;
+               right:8px;
+               width: 10px;
+               height: 10px;
+               border-radius: 50%;
+               box-shadow: 3px 10px 4px #FFF;
+          } 
+          .ell{
+               right:5px;bottom: 30px;
+          }  
+          .err{
+               left:5px;bottom: 30px;
+          }       
+	</style>
+</head>
+<body>
+	<div class="scene">
+		<div class="face">
+			<div class="mouse">
+				<div class="mouth"></div>
+				<div class="mouthb"></div>
+				<div class="line"></div>
+				<div class="hul"></div>
+				<div class="hur"></div>
+				<div class="nose">
+					<div class="nose_s"></div>
+				</div>
+				<div class="eyesl">
+					<div class="el"></div>
+				</div>
+				<div class="eyesr">
+					<div class="er"></div>
+				</div>
+			</div>
+		</div>
+          <div class="legl">
+               <div class="handl"></div>
+               <div class="hsl"></div>
+          </div>
+          <div class="legr">
+               <div class="handr"></div>
+               <div class="hsr"></div>
+          </div>
+          <div class="shenti">
+               <div class="kongxi">
+                    <div class="kxbg"></div>
+               </div>
+          </div>
+          <div class="shentibg"></div>
+          <div class="koudaibg">
+               <div class="koudai"></div>
+          </div>
+          <div class="footerl"></div>
+          <div class="footerr"></div>
+		<div class="lingdai"></div>
+          <div class="lingdang">
+               <div class="ldline"></div>
+               <div class="ldshadow"></div>
+               <div class="ldflower"></div>
+               <div class="ldlight"></div>
+          </div>
+	</div>
+     <script>
+        var nose=document.querySelector(".nose");
+        var el=document.querySelector("div[class=el]")
+        var er=document.querySelector(".er");
+        var ld=document.querySelector(".lingdang")
+        var num=0;
+        nose.onclick=function(){
+          num++;
+          if(num%2==1){
+               el.style.cssText="right:5px;bottom: 30px;";
+               er.style.cssText="left:5px;bottom: 30px;";
+          }else if(num%2==0){
+               el.style.cssText="right:10px;bottom: 20px;";
+               er.style.cssText="left:10px;bottom: 20px;"; 
+          }
+
+        }
+        ld.onmouseover=function(){
+          ld.style.cssText="-webkit-animation:ldas 0.2s infinite;"
+
+        }
+        ld.onmouseout=function(){
+          ld.style.cssText="-webkit-animation:lda 0.2s infinite;"
+        }
+
+        nose.onmouseover=function(){
+          nose.style.cssText="-webkit-animation:lmds 0.6s infinite;"
+
+        }
+        nose.onmouseout=function(){
+          nose.style.cssText="-webkit-animation:lmd 0.6s infinite;"
+        }
+        ld.onclick=function(){
+          num++;
+          if(num%2==1){
+               el.style.cssText="width:10px;height:10px;";
+               er.style.cssText="width:20px;height:20px;";
+          }else if(num%2==0){
+               er.style.cssText="width:10px;height:10px;";
+               el.style.cssText="width:20px;height:20px;";
+          }
+
+        }
+     </script>
+</body>
+</html>
